@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "weed-cowork",
+  "owner": {
+    "name": "weedmo"
+  },
+  "metadata": {
+    "description": "Document collaboration tools - Notion-based issue reporting and manufacturing documentation",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "weed-cowork",
+      "source": "./",
+      "description": "Notion-based issue reporting and document collaboration for manufacturing environments",
+      "version": "0.1.0",
+      "author": {
+        "name": "weedmo"
+      },
+      "category": "productivity",
+      "tags": ["documents", "notion", "issue-report", "manufacturing"]
+    }
+  ]
+}
