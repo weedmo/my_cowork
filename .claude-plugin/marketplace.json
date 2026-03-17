@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Document collaboration tools - Notion-based issue reporting and manufacturing documentation",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
       "name": "weed-cowork",
       "source": "./",
       "description": "Notion-based issue reporting and document collaboration for manufacturing environments",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "weedmo"
       },

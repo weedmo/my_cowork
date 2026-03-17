@@ -1,6 +1,6 @@
 {
   "name": "weed-cowork",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Document collaboration tools for manufacturing - Notion-based issue reporting and documentation workflows",
   "author": {
     "name": "weedmo"
@@ -10,6 +10,7 @@
   "license": "MIT",
   "keywords": ["documents", "notion", "issue-report", "manufacturing", "collaboration"],
   "skills": [
-    "./skills/issue-report"
+    "./skills/issue-report",
+    "./skills/paper-review"
   ]
 }
