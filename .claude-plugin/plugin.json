@@ -11,6 +11,7 @@
   "keywords": ["documents", "notion", "issue-report", "manufacturing", "collaboration"],
   "skills": [
     "./skills/issue-report",
-    "./skills/paper-review"
+    "./skills/paper-review",
+    "./skills/sync"
   ]
 }
