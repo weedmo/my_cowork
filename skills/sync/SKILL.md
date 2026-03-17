@@ -18,7 +18,7 @@ You are syncing plugin repos. The target argument is: `$ARGUMENTS`
 | Alias | GitHub Repo | Local Path | Cache Key |
 |-------|------------|------------|-----------|
 | `weed-harness` | `weedmo/my_harness` | `~/.claude/` | `weed-harness@weed-plugins` |
-| `weed-cowork` | `weedmo/my_cowork` | `~/repos/my_cowork/` | `weed-cowork@weed-plugins` |
+| `weed-cowork` | `weedmo/my_cowork` | `~/repos/my_cowork/` | `weed-cowork@weed-cowork` |
 
 ### External repos (pull direction)
 
@@ -85,7 +85,8 @@ Update these locations with NEW_VERSION using the Edit tool:
 1. `~/repos/my_cowork/.claude-plugin/plugin.json` → `"version": "NEW_VERSION"`
 2. `~/repos/my_cowork/.claude-plugin/marketplace.json` → `metadata.version` field
 3. `~/repos/my_cowork/.claude-plugin/marketplace.json` → `plugins[name="weed-cowork"].version`
-4. **Cross-repo**: `~/.claude/.claude-plugin/marketplace.json` → `plugins[name="weed-cowork"].version` (add field if missing)
+
+weed-cowork is an independent marketplace — no cross-repo update needed.
 
 Verify all updated values match after editing.
 
@@ -102,20 +103,6 @@ git push origin vNEW_VERSION
 
 Do NOT include Co-Authored-By lines.
 
-### A6. Cross-Repo Marketplace Update (weed-cowork only)
-
-**This step only applies when syncing weed-cowork.** Skip for weed-harness.
-
-After pushing weed-cowork, the harness marketplace.json was modified in A4 step 4.
-Commit and push harness to keep marketplace.json in sync:
-
-```bash
-cd ~/.claude
-git add .claude-plugin/marketplace.json
-git commit -m "chore: update weed-cowork version to NEW_VERSION in marketplace"
-git push origin main
-```
-
 ### A7. GitHub Release
 
 ```bash
@@ -123,12 +110,18 @@ cd LOCAL_PATH
 gh release create vNEW_VERSION --generate-notes
 ```
 
-### A8. Marketplace Sync (MANDATORY)
+### A6. Marketplace Sync (MANDATORY)
 
 This step MUST always run after any release. It syncs the local marketplace clone with the remote.
 
+Each own repo has its own marketplace clone directory:
+- `weed-harness` → `~/.claude/plugins/marketplaces/weed-plugins`
+- `weed-cowork` → `~/.claude/plugins/marketplaces/weed-cowork`
+
 ```bash
-MARKETPLACE_DIR=~/.claude/plugins/marketplaces/weed-plugins
+# Set MARKETPLACE_DIR based on alias:
+# weed-harness → ~/.claude/plugins/marketplaces/weed-plugins
+# weed-cowork → ~/.claude/plugins/marketplaces/weed-cowork
 if [ -d "$MARKETPLACE_DIR" ]; then
   git -C "$MARKETPLACE_DIR" fetch origin
   git -C "$MARKETPLACE_DIR" reset --hard origin/main
